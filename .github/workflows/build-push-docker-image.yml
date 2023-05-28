@@ -1,4 +1,4 @@
-name: Build Docker Image
+name: Build and Push Docker Image
 
 on:
   push:
@@ -54,10 +54,9 @@ jobs:
             "DOCKER_TAG=${{ env.TAG_NAME }}"
           # Note: tags has to be all lower-case
           tags: |
-            mamdouni/k8s-debugger:latest
-            mamdouni/k8s-debugger:${{ env.TAG_NAME }}
-          # build on feature branches, push only on main branch
-          push: ${{ github.ref == 'refs/heads/main' }}
+            mouhamedali/k8s-debugger:latest
+            mouhamedali/k8s-debugger:${{ env.TAG_NAME }}
+          push: true
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
