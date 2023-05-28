@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>K8s Debugger</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+</head>
+<body>
+<ul>
+    <li><h2>Welcome to the K8s Debugger home page</h2></li>
+</ul>
+<img th:src="@{images/spring-boot.png}" />
+<h2 th:text="'Local Host Name [ ' + ${local_host_name} + ' ]'"></h2>
+<h2 th:text="'Local Host Address [ ' + ${local_host_address}+ ' ]'"></h2>
+<h2 th:text="'Loop Host Name [ ' + ${loop_host_name}+ ' ]'"></h2>
+<h2 th:text="'Loop Host Address [ ' + ${loop_host_address}+ ' ]'"></h2>
+<h2 th:text="'Port [ ' + ${port}+ ' ]'"></h2>
+<h2 th:text="'Node Name [ ' + ${node_name}+ ' ]'"></h2>
+<h2 th:text="'Version [ ' + ${version}+ ' ]'"></h2>
+</body>
+</html>
