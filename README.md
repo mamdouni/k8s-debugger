@@ -47,6 +47,8 @@ http://172.19.242.246:31003
 
 and check then the url from your browser.
 
+![2023-05-29_12h35_37](https://github.com/mamdouni/k8s-debugger/assets/61866853/96f93fc3-7570-4c3a-ba8a-5c086eb4f013)
+
 ## Build
 
 If you check the sources, you'll find two important files for the build :
