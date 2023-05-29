@@ -1,6 +1,5 @@
 package org.spring.example.k8s.debugger.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import org.springframework.stereotype.Service;
@@ -9,30 +8,35 @@ import org.springframework.stereotype.Service;
 public class BackgroundColorService {
 
     private static final Random RANDOM = new Random();
-    private final List<String> colors;
+    private final String pickedColor;
 
     public BackgroundColorService() {
+        this.pickedColor = buildASetOfColors().get(RANDOM.nextInt(15));
+    }
 
-        this.colors = new ArrayList<>();
-        this.colors.add("crimson");
-        this.colors.add("black");
-        this.colors.add("rebeccapurple");
-        this.colors.add("midnightblue");
-        this.colors.add("dodgerblue");
-        this.colors.add("blueviolet");
-        this.colors.add("burlywood");
-        this.colors.add("chocolate");
-        this.colors.add("darkolivegreen");
-        this.colors.add("darkgreen");
-        this.colors.add("greenyellow");
-        this.colors.add("darkgrey");
-        this.colors.add("deeppink");
-        this.colors.add("magenta");
-        this.colors.add("tomato");
+    private List<String> buildASetOfColors() {
+
+        return List.of(
+                "crimson",
+                "black",
+                "rebeccapurple",
+                "midnightblue",
+                "dodgerblue",
+                "blueviolet",
+                "burlywood",
+                "chocolate",
+                "darkolivegreen",
+                "darkgreen",
+                "greenyellow",
+                "darkgrey",
+                "deeppink",
+                "magenta",
+                "tomato"
+        );
     }
 
     public String pickAColor(){
 
-        return colors.get(RANDOM.nextInt(15));
+        return this.pickedColor;
     }
 }

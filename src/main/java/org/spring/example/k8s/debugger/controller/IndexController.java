@@ -21,10 +21,8 @@ public class IndexController {
 
     @GetMapping("/")
     public String main(Model model) throws UnknownHostException {
-        model.addAttribute("local_host_name", ipAddressService.getLocalHostName());
-        model.addAttribute("local_host_address", ipAddressService.getLocalHostAddress());
-        model.addAttribute("loop_host_name", ipAddressService.getLoopHostName());
-        model.addAttribute("loop_host_address", ipAddressService.getLoopHostAddress());
+        model.addAttribute("hostname", ipAddressService.getLocalHostName());
+        model.addAttribute("ip_address", ipAddressService.getLocalHostAddress());
         model.addAttribute("port", portService.getPort());
         model.addAttribute("node_name", containerService.getNodeName());
         model.addAttribute("version", containerService.getContainerTagVersion());
