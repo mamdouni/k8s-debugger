@@ -7,7 +7,7 @@
     <link rel="stylesheet" th:href="@{/css/main.css}"/>
 </head>
 <body>
-<ul>
+<ul th:style="'background-color: '+${color}">
     <li><h2>Welcome to the K8s Debugger home page</h2></li>
 </ul>
 <img th:src="@{images/spring-boot.png}" />
