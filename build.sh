@@ -22,12 +22,12 @@ echo
                 exit;;
         2)
                 echo "Delivering Prod ..."
-                echo -n "> Please select a version number ( for example v1.2.3 ) : "
+                echo -n "> Please select a version number ( for example 1.2.3 ) : "
                 read version
-                if [[ "$version" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]];then
+                if [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]];then
                         git tag $version -am "Building the corporate version $version" && git push origin $version
                 else
-                        printf "${ERROR} : Version must follow this regular expression v[digit].[digit].[digit], for example v1.2.3\n"
+                        printf "${ERROR} : Version must follow this regular expression [digit].[digit].[digit], for example 1.2.3\n"
                         exit
                 fi
         ;;

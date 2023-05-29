@@ -60,11 +60,11 @@ If this is a test version, you can choose ``uat`` otherwise if this is a corpora
 
 The script will push the tag :
 - ``uat`` : if you select the first option
-- ``vX.X.X`` : which is your corporate version if you select the second option
+- ``X.x.x`` : which is your corporate version if you select the second option
 
 After pushing, the ``Build and Push Docker Image`` github actions will be triggered.
 This workflow, will :
-- Define the docker image tag : which is ``uat`` or ``vX.X.X`` suffixed by the current date-time and the sha1 of the last commit.
+- Define the docker image tag : which is ``uat`` or ``X.X.X`` suffixed by the current date-time and the sha1 of the last commit.
 - Package the project
 - Build the docker image
 - Push the docker image with the defined tag and a latest tag
