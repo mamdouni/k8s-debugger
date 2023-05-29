@@ -17,11 +17,7 @@ jobs:
         if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
         run: |
           TAG_PREFIX=$(echo $GITHUB_REF_NAME | cut -d'-' -f1)
-          if [[ "$TAG_PREFIX" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]];then
-              TAG_NAME=${TAG_PREFIX}+build.$(date +%Y%m%d%H%M).$(git rev-parse --short HEAD)
-          else
-              TAG_NAME=${TAG_PREFIX}-$(date +%Y%m%d%H%M)-$(git rev-parse --short HEAD)
-          fi
+          TAG_NAME=${TAG_PREFIX}-$(date +%Y%m%d%H%M)-$(git rev-parse --short HEAD)
           echo "TAG_NAME=${TAG_NAME}" >> $GITHUB_ENV
           echo "tag name is :: $TAG_NAME"
 
