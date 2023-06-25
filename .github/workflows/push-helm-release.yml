@@ -8,12 +8,12 @@ on:
   workflow_dispatch:
 
 env:
-  CHART_NAME: k8s-debugger
-  CHART_VERSION: 1.1.0
+  CHART_NAME: k8sdebugger
+  CHART_VERSION: 1.0.0
 
 defaults:
   run:
-    working-directory: ./charts/k8s-debugger
+    working-directory: ./charts/k8sdebugger
 
 jobs:
 

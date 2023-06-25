@@ -77,6 +77,8 @@ The docker image will be hosted on the dockerhub account, but feel free to chang
 We are using Helm charts to release our application.
 There is an action responsible for pushing charts which is called ``Push an Helm Release on GCR`` and you can find it in the actions list of the repo.
 
+You can find the char here :
+- https://github.com/mamdouni/k8s-debugger/pkgs/container/k8s-debugger
 
 ## References
 - https://mkyong.com/spring-boot/spring-boot-hello-world-example-thymeleaf/
