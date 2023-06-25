@@ -7,10 +7,6 @@ permissions:
 on:
   workflow_dispatch:
 
-env:
-  CHART_NAME: "$(cat Chart.yaml | grep 'name' | awk '{printf $2}')"
-  CHART_VERSION: "$(cat Chart.yaml | grep 'version' | awk '{printf $2}')"
-
 defaults:
   run:
     working-directory: ./charts/k8sdebugger
@@ -21,6 +17,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
+      - name: Set env
+        run: |
+          echo "CHART_NAME=$(cat Chart.yaml | grep 'name' | awk '{printf $2}')" >> $GITHUB_ENV
+          echo "CHART_VERSION=$(cat Chart.yaml | grep 'version' | awk '{printf $2}')" >> $GITHUB_ENV
+
+      - name: Show env
+        run: |
+          echo "CHART_NAME=$CHART_NAME"
+          echo "CHART_VERSION=$CHART_VERSION"
 
       - name: helm lint
         run: |
