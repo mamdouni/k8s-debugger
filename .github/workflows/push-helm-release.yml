@@ -8,8 +8,8 @@ on:
   workflow_dispatch:
 
 env:
-  CHART_NAME: k8sdebugger
-  CHART_VERSION: 1.0.0
+  CHART_NAME: "$(cat Chart.yaml | grep 'name' | awk '{printf $2}')"
+  CHART_VERSION: "$(cat Chart.yaml | grep 'version' | awk '{printf $2}')"
 
 defaults:
   run:
