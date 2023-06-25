@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-{{ .Chart.Name }}-deployment
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-{{ .Chart.Name }}
+  replicas: {{ .Values.replicaCount }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-{{ .Chart.Name }}
+    spec:
+      containers:
+        - name: {{ .Release.Name }}-{{ .Chart.Name }}
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          ports:
+            - containerPort: 8080
+          env:
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+          livenessProbe:
+            initialDelaySeconds: 20
+            periodSeconds: 2
+            httpGet:
+              port: 8080
+              path: /actuator/health/liveness
+          readinessProbe:
+            initialDelaySeconds: 20
+            periodSeconds: 2
+            httpGet:
+              port: 8080
+              path: /actuator/health/readiness

@@ -1,0 +1,7 @@
+image:
+  repository: mouhamedali/k8s-debugger
+  tag: latest
+replicaCount: 2
+service:
+  type: NodePort
+  port: 80
