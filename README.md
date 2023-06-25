@@ -62,7 +62,7 @@ The script will push the tag :
 - ``uat`` : if you select the first option
 - ``X.x.x`` : which is your corporate version if you select the second option
 
-After pushing, the ``Build and Push Docker Image`` github actions will be triggered.
+After pushing, the ``Build and Push Docker Image`` github action will be triggered.
 This workflow, will :
 - Define the docker image tag : which is ``uat`` or ``X.X.X`` suffixed by the current date-time and the sha1 of the last commit.
 - Package the project
@@ -70,7 +70,13 @@ This workflow, will :
 - Push the docker image with the defined tag and a latest tag
 
 The docker image will be hosted on the dockerhub account, but feel free to change that :
-- https://hub.docker.com/repository/docker/mouhamedali/k8s-debugger/general
+- https://hub.docker.com/r/mouhamedali/k8s-debugger
+
+## Release
+
+We are using Helm charts to release our application.
+There is an action responsible for pushing charts which is called ``Push an Helm Release on GCR`` and you can find it in the actions list of the repo.
+
 
 ## References
 - https://mkyong.com/spring-boot/spring-boot-hello-world-example-thymeleaf/
@@ -80,6 +86,9 @@ The docker image will be hosted on the dockerhub account, but feel free to chang
 - https://github.com/docker/build-push-action#examples
 - https://event-driven.io/en/how_to_buid_and_push_docker_image_with_github_actions/
 - https://dev.to/jpoehnelt/environment-variables-in-github-docker-build-push-action-23pj
+- https://helm.sh/docs/helm/helm_lint/
+- https://helm.sh/docs/helm/helm_package/
+- https://medium.com/google-cloud/ci-gitops-with-helm-github-actions-github-container-registry-and-config-sync-836913e74e79
 
 ### Nigel Brown work
 Inspired from the nginxhello repo :

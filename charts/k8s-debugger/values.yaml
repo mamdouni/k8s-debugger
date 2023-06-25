@@ -1,6 +1,6 @@
 image:
   repository: mouhamedali/k8s-debugger
-  tag: latest
+  tag: 1.0.2-202305291713-014c11f
 replicaCount: 2
 service:
   type: NodePort

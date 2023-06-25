@@ -1,0 +1,43 @@
+name: Push an Helm Release on GCR
+
+permissions:
+  packages: write
+  contents: read
+
+on:
+  workflow_dispatch:
+
+env:
+  CHART_NAME: k8s-debugger
+  CHART_VERSION: 1.0.0
+
+defaults:
+  run:
+    working-directory: ./charts/k8s-debugger
+
+jobs:
+
+  push-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: helm lint
+        run: |
+          helm lint .
+      # https://helm.sh/docs/helm/helm_lint/
+
+      - name: helm login
+        run: |
+          echo ${{ secrets.GITHUB_TOKEN }} | helm registry login ghcr.io -u $ --password-stdin
+      # https://helm.sh/docs/helm/helm_package/
+
+      - name: helm package
+        run: |
+          helm package .
+      # https://helm.sh/docs/helm/helm_package/
+
+      - name: helm push
+        run: |
+          helm push $CHART_NAME-$IMAGE_TAG.tgz oci://ghcr.io/${{ github.repository_owner }}
+      # https://helm.sh/docs/helm/helm_push/
